@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 import { SEO } from "../config/seo";
 
 const { title = SEO.title, description = SEO.description } = Astro.props;
@@ -45,5 +46,5 @@ const { title = SEO.title, description = SEO.description } = Astro.props;
 </div>
 
 </body>
-
+<Footer />
 </html>
