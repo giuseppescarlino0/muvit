@@ -1,0 +1,277 @@
+---
+const fleetItems = [
+  {
+    category: "City",
+    price: "da €19",
+    description:
+      "Compatta, agile e perfetta per gli spostamenti quotidiani in città.",
+    features: ["Cambio automatico", "5 porte", "Bassi consumi"],
+  },
+  {
+    category: "SUV",
+    price: "da €39",
+    description:
+      "Più comfort, più spazio e una guida versatile per ogni esigenza.",
+    features: ["Più spazio", "Comfort premium", "Ideale per weekend"],
+  },
+  {
+    category: "Van",
+    price: "da €59",
+    description:
+      "La soluzione giusta per gruppi, lavoro o trasporti più capienti.",
+    features: ["Ampio bagagliaio", "Più posti", "Massima versatilità"],
+  },
+];
+---
+
+<section class="fleet" id="fleet">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-kicker">Flotta</p>
+      <h2>Scegli il veicolo giusto in pochi secondi.</h2>
+      <p class="section-text">
+        Una panoramica immediata delle categorie disponibili, con informazioni
+        chiare, visual puliti e call to action sempre visibili.
+      </p>
+    </div>
+
+    <div class="fleet-grid">
+      {fleetItems.map((item) => (
+        <article class="fleet-card">
+          <div class="fleet-visual">
+            <div class="fleet-placeholder">
+              <span>{item.category}</span>
+            </div>
+          </div>
+
+          <div class="fleet-content">
+            <div class="fleet-top">
+              <div>
+                <p class="fleet-label">Categoria</p>
+                <h3>{item.category}</h3>
+              </div>
+
+              <strong class="fleet-price">{item.price}</strong>
+            </div>
+
+            <p class="fleet-description">{item.description}</p>
+
+            <ul class="fleet-features">
+              {item.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+
+            <a href="#booking" class="fleet-link">Prenota ora</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fleet {
+    padding: 88px 0;
+    background:
+      radial-gradient(circle at top right, rgba(233, 85, 25, 0.08), transparent 24%),
+      linear-gradient(180deg, #f8f3ee 0%, #f4ede7 100%);
+  }
+
+  .container {
+    width: min(1200px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .section-head {
+    max-width: 760px;
+    margin-bottom: 36px;
+  }
+
+  .section-kicker {
+    margin: 0 0 14px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e95519;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    color: #1a1a1a;
+  }
+
+  .section-text {
+    margin: 18px 0 0;
+    max-width: 58ch;
+    font-size: 1.04rem;
+    line-height: 1.75;
+    color: #5f5a56;
+  }
+
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .fleet-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 42px rgba(31, 20, 14, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .fleet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 56px rgba(31, 20, 14, 0.12);
+  }
+
+  .fleet-visual {
+    padding: 18px 18px 0;
+  }
+
+  .fleet-placeholder {
+    min-height: 220px;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at top left, rgba(233, 85, 25, 0.14), transparent 30%),
+      linear-gradient(180deg, #f8f3ee 0%, #ece2d8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .fleet-placeholder span {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: rgba(26, 26, 26, 0.8);
+  }
+
+  .fleet-content {
+    padding: 24px 24px 28px;
+    display: grid;
+    gap: 18px;
+  }
+
+  .fleet-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .fleet-label {
+    margin: 0 0 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e95519;
+  }
+
+  .fleet-top h3 {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #1a1a1a;
+  }
+
+  .fleet-price {
+    font-size: 1.25rem;
+    line-height: 1;
+    white-space: nowrap;
+    color: #1a1a1a;
+  }
+
+  .fleet-description {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #5f5a56;
+  }
+
+  .fleet-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .fleet-features li {
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(233, 85, 25, 0.1);
+    color: #b84817;
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .fleet-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    width: fit-content;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: #e95519;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 14px 30px rgba(233, 85, 25, 0.2);
+  }
+
+  .fleet-link:hover {
+    transform: translateY(-1px);
+    background: #cf4912;
+  }
+
+  @media (max-width: 1024px) {
+    .fleet-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .fleet {
+      padding: 64px 0;
+    }
+
+    .fleet-card {
+      border-radius: 22px;
+    }
+
+    .fleet-placeholder {
+      min-height: 190px;
+      border-radius: 18px;
+    }
+
+    .fleet-content {
+      padding: 22px;
+    }
+
+    .fleet-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

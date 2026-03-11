@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+import { SEO } from "../config/seo";
+
+const { title = SEO.title, description = SEO.description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+
+<link rel="canonical" href={SEO.siteUrl} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={SEO.image} />
+<meta property="og:locale" content={SEO.locale} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "AutoRental",
+    "name": "Muvit",
+    "url": "https://muvit.it",
+    "telephone": "+39 123456789",
+    "email": "info@muvit.it"
+    }
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+<slot />
+</div>
+
+</body>
+
+</html>

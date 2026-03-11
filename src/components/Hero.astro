@@ -1,0 +1,356 @@
+<section class="hero" id="booking">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="hero-kicker">Noleggio smart, semplice, immediato</p>
+  
+        <h1>
+          Muoviti meglio
+          <span>con MUVIT</span>
+        </h1>
+  
+        <p class="hero-description">
+          Prenota il veicolo giusto in pochi passaggi, con un’esperienza chiara,
+          veloce e costruita per accompagnarti dalla scelta alla partenza senza attriti.
+        </p>
+  
+        <div class="hero-actions">
+          <a href="#fleet" class="btn btn-primary">Prenota Ora</a>
+          <a href="#services" class="btn btn-secondary">Scopri di più</a>
+        </div>
+  
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>+120</strong>
+            <span>mezzi disponibili</span>
+          </div>
+          <div class="stat-card">
+            <strong>24/7</strong>
+            <span>supporto attivo</span>
+          </div>
+          <div class="stat-card">
+            <strong>3 min</strong>
+            <span>prenotazione media</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="hero-visual">
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+  
+        <div class="vehicle-card">
+          <div class="vehicle-badge">Disponibile oggi</div>
+  
+          <div class="vehicle-image-wrap">
+            <img
+              src="/images/hero-car.png"
+              alt="Veicolo MUVIT"
+              class="vehicle-image"
+            />
+          </div>
+  
+          <div class="vehicle-info">
+            <div>
+              <p class="vehicle-label">City Mobility</p>
+              <h2>Pronta a partire</h2>
+            </div>
+  
+            <div class="vehicle-meta">
+              <strong>da €19 / giorno</strong>
+              <span>Prenotazione istantanea</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 88px;
+      background:
+        radial-gradient(circle at top left, rgba(233, 85, 25, 0.12), transparent 28%),
+        linear-gradient(180deg, #fcf8f4 0%, #f4ede7 100%);
+    }
+  
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+  
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 56px;
+    }
+  
+    .hero-content {
+      max-width: 640px;
+    }
+  
+    .hero-kicker {
+      margin: 0 0 18px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e95519;
+    }
+  
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      color: #1a1a1a;
+    }
+  
+    h1 span {
+      display: block;
+      color: #e95519;
+    }
+  
+    .hero-description {
+      margin: 24px 0 0;
+      max-width: 56ch;
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: #5f5a56;
+    }
+  
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+  
+    .btn {
+      min-height: 52px;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+  
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+  
+    .btn-primary {
+      background: #e95519;
+      color: white;
+      box-shadow: 0 14px 30px rgba(233, 85, 25, 0.22);
+    }
+  
+    .btn-primary:hover {
+      background: #cf4912;
+    }
+  
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.82);
+      color: #1f1f1f;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 42px;
+    }
+  
+    .stat-card {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+    }
+  
+    .stat-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.35rem;
+      color: #1a1a1a;
+    }
+  
+    .stat-card span {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #5f5a56;
+    }
+  
+    .hero-visual {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .hero-glow {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      pointer-events: none;
+    }
+  
+    .hero-glow-one {
+      width: 220px;
+      height: 220px;
+      top: 40px;
+      left: 10px;
+      background: radial-gradient(circle, rgba(233, 85, 25, 0.24), rgba(233, 85, 25, 0.02));
+    }
+  
+    .hero-glow-two {
+      width: 280px;
+      height: 280px;
+      bottom: 20px;
+      right: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.05));
+    }
+  
+    .vehicle-card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 500px);
+      padding: 28px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 60px rgba(31, 20, 14, 0.12);
+    }
+  
+    .vehicle-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(233, 85, 25, 0.12);
+      color: #e95519;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+  
+    .vehicle-image-wrap {
+      margin: 26px 0 20px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f8f3ee 0%, #efe6de 100%);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .vehicle-image {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+  
+    .vehicle-info {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  
+    .vehicle-label {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e95519;
+    }
+  
+    .vehicle-info h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #1a1a1a;
+    }
+  
+    .vehicle-meta {
+      display: grid;
+      gap: 6px;
+      text-align: right;
+    }
+  
+    .vehicle-meta strong {
+      font-size: 1.08rem;
+      color: #1a1a1a;
+    }
+  
+    .vehicle-meta span {
+      font-size: 0.9rem;
+      color: #5f5a56;
+    }
+  
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+  
+      .hero-content {
+        max-width: 100%;
+      }
+  
+      .hero-visual {
+        min-height: 460px;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .hero {
+        padding: 48px 0 64px;
+      }
+  
+      h1 {
+        font-size: clamp(2.7rem, 12vw, 4.3rem);
+      }
+  
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+  
+      .vehicle-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+  
+      .vehicle-image-wrap {
+        min-height: 220px;
+      }
+  
+      .vehicle-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .vehicle-meta {
+        text-align: left;
+      }
+    }
+  </style>
