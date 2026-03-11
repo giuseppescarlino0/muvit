@@ -1,0 +1,562 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import FinalCta from "../../components/FinalCta.astro";
+
+const fleetItems = [
+  {
+    name: "City",
+    category: "city",
+    price: 19,
+    priceLabel: "da €19",
+    description: "Compatta, agile e perfetta per gli spostamenti quotidiani in città.",
+    features: ["Cambio automatico", "5 porte", "Bassi consumi"],
+  },
+  {
+    name: "Urban",
+    category: "city",
+    price: 25,
+    priceLabel: "da €25",
+    description: "Ideale per chi cerca praticità, comfort e facilità di parcheggio.",
+    features: ["Climatizzatore", "Bluetooth", "Compatta"],
+  },
+  {
+    name: "SUV",
+    category: "suv",
+    price: 39,
+    priceLabel: "da €39",
+    description: "Più comfort, più spazio e una guida versatile per ogni esigenza.",
+    features: ["Comfort premium", "Ampio spazio", "Perfetta per weekend"],
+  },
+  {
+    name: "SUV Plus",
+    category: "suv",
+    price: 49,
+    priceLabel: "da €49",
+    description: "Una soluzione più premium per chi vuole spazio e presenza su strada.",
+    features: ["Interni premium", "Navigatore", "Più capienza"],
+  },
+  {
+    name: "Van",
+    category: "van",
+    price: 59,
+    priceLabel: "da €59",
+    description: "La soluzione giusta per gruppi, lavoro o trasporti più capienti.",
+    features: ["Più posti", "Ampio bagagliaio", "Massima versatilità"],
+  },
+  {
+    name: "Van XL",
+    category: "van",
+    price: 79,
+    priceLabel: "da €79",
+    description: "Pensato per esigenze più grandi, con più spazio e massima comodità.",
+    features: ["9 posti", "Grande capacità", "Ideale per gruppi"],
+  },
+];
+---
+
+<BaseLayout canonicalPath="/flotta">
+  <Header />
+
+  <main class="fleet-page">
+    <section class="fleet-hero">
+      <div class="container">
+        <p class="fleet-kicker">Flotta</p>
+        <h1>Scegli il veicolo giusto per il tuo prossimo viaggio.</h1>
+        <p class="fleet-intro">
+          Filtra per categoria e fascia di prezzo, confronta le soluzioni disponibili
+          e trova il mezzo più adatto alle tue esigenze.
+        </p>
+      </div>
+    </section>
+
+    <section class="fleet-section">
+      <div class="container fleet-layout">
+        <aside class="fleet-filters">
+          <div class="filter-card">
+            <p class="filter-kicker">Filtri</p>
+            <h2>Trova il mezzo perfetto</h2>
+            <p class="filter-copy">
+              Seleziona la categoria e il budget per visualizzare solo i veicoli più adatti.
+            </p>
+
+            <div class="filter-group">
+              <label for="category">Categoria</label>
+              <select id="category" class="filter-input">
+                <option value="all">Tutte le categorie</option>
+                <option value="city">City</option>
+                <option value="suv">SUV</option>
+                <option value="van">Van</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="price">Prezzo massimo al giorno</label>
+              <select id="price" class="filter-input">
+                <option value="all">Qualsiasi prezzo</option>
+                <option value="25">Fino a €25</option>
+                <option value="40">Fino a €40</option>
+                <option value="60">Fino a €60</option>
+                <option value="80">Fino a €80</option>
+              </select>
+            </div>
+
+            <button id="resetFilters" type="button" class="filter-reset">
+              Reset filtri
+            </button>
+          </div>
+        </aside>
+
+        <div class="fleet-results">
+          <div class="results-head">
+            <p class="results-count">
+              <span id="resultsCount">{fleetItems.length}</span> veicoli disponibili
+            </p>
+          </div>
+
+          <div class="fleet-grid" id="fleetGrid">
+            {fleetItems.map((item) => (
+              <article
+                class="fleet-card"
+                data-category={item.category}
+                data-price={item.price}
+              >
+                <div class="fleet-visual">
+                  <div class="fleet-placeholder">
+                    <span>{item.name}</span>
+                  </div>
+                </div>
+
+                <div class="fleet-content">
+                  <div class="fleet-top">
+                    <div>
+                      <p class="fleet-label">Categoria</p>
+                      <h3>{item.name}</h3>
+                    </div>
+
+                    <strong class="fleet-price">{item.priceLabel}</strong>
+                  </div>
+
+                  <p class="fleet-description">{item.description}</p>
+
+                  <ul class="fleet-features">
+                    {item.features.map((feature) => (
+                      <li>{feature}</li>
+                    ))}
+                  </ul>
+
+                  <a href="/contatti" class="fleet-link">Richiedi disponibilità</a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p class="no-results" id="noResults" hidden>
+            Nessun veicolo trovato con i filtri selezionati.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <FinalCta />
+  </main>
+</BaseLayout>
+
+<script>
+  const categorySelect = document.querySelector("#category");
+  const priceSelect = document.querySelector("#price");
+  const resetButton = document.querySelector("#resetFilters");
+  const cards = Array.from(document.querySelectorAll(".fleet-card"));
+  const resultsCount = document.querySelector("#resultsCount");
+  const noResults = document.querySelector("#noResults");
+
+  function applyFilters() {
+    const selectedCategory = categorySelect?.value ?? "all";
+    const selectedPrice = priceSelect?.value ?? "all";
+
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const cardCategory = card.getAttribute("data-category");
+      const cardPrice = Number(card.getAttribute("data-price"));
+
+      const categoryMatch =
+        selectedCategory === "all" || cardCategory === selectedCategory;
+
+      const priceMatch =
+        selectedPrice === "all" || cardPrice <= Number(selectedPrice);
+
+      const isVisible = categoryMatch && priceMatch;
+
+      card.style.display = isVisible ? "" : "none";
+
+      if (isVisible) visibleCount += 1;
+    });
+
+    if (resultsCount) resultsCount.textContent = String(visibleCount);
+    if (noResults) noResults.hidden = visibleCount !== 0;
+  }
+
+  categorySelect?.addEventListener("change", applyFilters);
+  priceSelect?.addEventListener("change", applyFilters);
+
+  resetButton?.addEventListener("click", () => {
+    if (categorySelect) categorySelect.value = "all";
+    if (priceSelect) priceSelect.value = "all";
+    applyFilters();
+  });
+</script>
+
+<style>
+  * ,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .fleet-page {
+    background: linear-gradient(180deg, #fcf8f4 0%, #efe5dc 100%);
+  }
+
+  .container {
+    width: min(1200px, calc(100% - 32px));
+    margin: 0 auto;
+  }
+
+  .fleet-hero {
+    padding: 72px 0 32px;
+  }
+
+  .fleet-kicker {
+    margin: 0 0 14px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e95519;
+  }
+
+  .fleet-hero h1 {
+    margin: 0;
+    max-width: 11ch;
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: #1a1a1a;
+  }
+
+  .fleet-intro {
+    margin: 22px 0 0;
+    max-width: 60ch;
+    font-size: 1.04rem;
+    line-height: 1.75;
+    color: #5f5a56;
+  }
+
+  .fleet-section {
+    padding: 24px 0 88px;
+  }
+
+  .fleet-layout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .fleet-filters {
+    position: sticky;
+    top: 110px;
+  }
+
+  .filter-card {
+    padding: 32px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 24px 60px rgba(31, 20, 14, 0.1);
+  }
+
+  .filter-kicker {
+    margin: 0 0 14px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e95519;
+  }
+
+  .filter-card h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    color: #1a1a1a;
+  }
+
+  .filter-copy {
+    margin: 18px 0 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #5f5a56;
+  }
+
+  .filter-group {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .filter-group label {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .filter-input {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.96);
+    font: inherit;
+    color: #1a1a1a;
+    outline: none;
+    appearance: none;
+  }
+
+  .filter-input:focus {
+    border-color: rgba(233, 85, 25, 0.45);
+    box-shadow: 0 0 0 4px rgba(233, 85, 25, 0.08);
+  }
+
+  .filter-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    min-height: 52px;
+    width: 100%;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: none;
+    background: #e95519;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease;
+    box-shadow: 0 12px 30px rgba(233, 85, 25, 0.24);
+  }
+
+  .filter-reset:hover {
+    transform: translateY(-1px);
+    background: #cf4912;
+  }
+
+  .fleet-results {
+    min-width: 0;
+  }
+
+  .results-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .results-count {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #5f5a56;
+  }
+
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.fleet-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 18px 40px rgba(31,20,14,0.08);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.fleet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(31,20,14,0.12);
+}
+
+.fleet-visual {
+  padding: 18px;
+}
+
+.fleet-placeholder {
+  height: 200px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(233,85,25,0.14), transparent 30%),
+    linear-gradient(180deg,#f8f3ee 0%,#ece2d8 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.fleet-placeholder span {
+  font-size:1.9rem;
+  font-weight:800;
+  letter-spacing:-0.03em;
+}
+
+.fleet-content {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  padding:24px;
+  flex-grow:1;
+}
+
+.fleet-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.fleet-label {
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#e95519;
+}
+
+.fleet-top h3 {
+  margin:4px 0 0;
+  font-size:1.5rem;
+  letter-spacing:-0.03em;
+}
+
+.fleet-price {
+  font-size:1.2rem;
+  font-weight:700;
+}
+
+.fleet-description {
+  font-size:.96rem;
+  line-height:1.6;
+  color:#5f5a56;
+  min-height:60px;
+}
+
+.fleet-features {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.fleet-features li {
+  font-size:.8rem;
+  font-weight:700;
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(233,85,25,0.1);
+  color:#b84817;
+}
+
+.fleet-link {
+  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 20px;
+  border-radius:999px;
+  background:#e95519;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.fleet-link:hover {
+  background:#cf4912;
+  transform:translateY(-1px);
+}
+
+  .no-results {
+    margin: 20px 0 0;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.82);
+    color: #5f5a56;
+  }
+
+  @media (max-width: 1024px) {
+    .fleet-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .fleet-filters {
+      position: static;
+    }
+
+    .fleet-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .fleet-hero {
+      padding: 48px 0 24px;
+    }
+
+    .fleet-section {
+      padding: 16px 0 64px;
+    }
+
+    .filter-card {
+      padding: 24px;
+      border-radius: 24px;
+    }
+
+    .fleet-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fleet-card {
+      border-radius: 22px;
+    }
+
+    .fleet-placeholder {
+      min-height: 190px;
+      border-radius: 18px;
+    }
+
+    .fleet-content {
+      padding: 22px;
+    }
+
+    .fleet-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
