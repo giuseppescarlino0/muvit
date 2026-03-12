@@ -131,6 +131,23 @@ const fleetItems = [
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
+  @media (max-width:768px){
+
+.filter-card{
+  padding:20px;
+  border-radius:20px;
+}
+
+.filter-group{
+  margin-top:14px;
+}
+
+.filter-input{
+  min-height:48px;
+}
+
+}
+
   .fleet-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 24px 56px rgba(31, 20, 14, 0.12);
@@ -240,16 +257,65 @@ const fleetItems = [
     box-shadow: 0 14px 30px rgba(233, 85, 25, 0.2);
   }
 
+
+
   .fleet-link:hover {
     transform: translateY(-1px);
     background: #cf4912;
   }
+
+  @media (max-width: 900px){
+
+.fleet-layout{
+  grid-template-columns:1fr;
+  gap:20px;
+}
+
+.fleet-filters{
+  position:relative;
+  top:auto;
+}
+
+}
 
   @media (max-width: 1024px) {
     .fleet-grid {
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width:768px){
+
+.fleet-grid{
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.fleet-card{
+  border-radius:22px;
+}
+
+.fleet-content{
+  padding:20px;
+}
+
+.fleet-placeholder{
+  height:180px;
+}
+
+}
+
+@media (max-width:768px){
+
+.fleet-hero h1{
+  font-size:2.6rem;
+}
+
+.fleet-intro{
+  font-size:.95rem;
+}
+
+}
 
   @media (max-width: 768px) {
     .fleet {
