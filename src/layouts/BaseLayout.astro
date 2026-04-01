@@ -44,7 +44,27 @@ const { title = SEO.title, description = SEO.description } = Astro.props;
 <div class="container">
 <slot />
 </div>
-
+<div id="cookie-banner" class="cookie-banner">
+    <p>
+      Utilizziamo cookie per migliorare l’esperienza. 
+      <a href="/cookie-policy">Scopri di più</a>
+    </p>
+    <button id="accept-cookies">Accetta</button>
+  </div>
+  
+  <script>
+    const banner = document.getElementById("cookie-banner");
+    const btn = document.getElementById("accept-cookies");
+  
+    if (!localStorage.getItem("cookiesAccepted")) {
+      banner.style.display = "flex";
+    }
+  
+    btn.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "true");
+      banner.style.display = "none";
+    });
+  </script>
 </body>
 <Footer />
 </html>
