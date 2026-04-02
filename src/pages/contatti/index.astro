@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
-import FinalCta from "../../components/FinalCta.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
 <BaseLayout canonicalPath="/contatti">
@@ -22,58 +22,58 @@ import FinalCta from "../../components/FinalCta.astro";
     <section class="contact-section">
       <div class="container contact-grid">
         <aside class="contact-card contact-info">
-            <p class="section-kicker">Informazioni</p>
-            <h2>Restiamo in contatto</h2>
-            <p class="contact-copy">
-              Siamo a disposizione per aiutarti con prenotazioni, disponibilità
-              veicoli e richieste generali.
-            </p>
-          
-            <div class="info-list">
-              <div class="info-item">
-                <span class="info-label">
-                  <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 6.5C4 5.67 4.67 5 5.5 5h13c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-13C4.67 19 4 18.33 4 17.5v-11Z" />
-                    <path d="m5 7 7 5 7-5" />
-                  </svg>
-                  Email
-                </span>
-                <a href="mailto:info@muvit.it">info@muvit.it</a>
-              </div>
-          
-              <div class="info-item">
-                <span class="info-label">
-                  <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 16.92v2.08a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.15a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z" />
-                  </svg>
-                  Telefono
-                </span>
-                <a href="tel:+390000000000">+39 000 000 0000</a>
-              </div>
-          
-              <div class="info-item">
-                <span class="info-label">
-                  <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" />
-                    <circle cx="12" cy="10" r="2.5" />
-                  </svg>
-                  Sede
-                </span>
-                <p>Via Roma 123, Lecce</p>
-              </div>
-          
-              <div class="info-item">
-                <span class="info-label">
-                  <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 7v5l3 3" />
-                  </svg>
-                  Orari
-                </span>
-                <p>Lun - Sab · 09:00 - 19:00</p>
-              </div>
+          <p class="section-kicker">Informazioni</p>
+          <h2>Restiamo in contatto</h2>
+          <p class="contact-copy">
+            Siamo a disposizione per aiutarti con prenotazioni, disponibilità
+            veicoli e richieste generali.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">
+                <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6.5C4 5.67 4.67 5 5.5 5h13c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-13C4.67 19 4 18.33 4 17.5v-11Z" />
+                  <path d="m5 7 7 5 7-5" />
+                </svg>
+                Email
+              </span>
+              <a href="mailto:info@muvit.it">info@muvit.it</a>
             </div>
-          </aside>
+
+            <div class="info-item">
+              <span class="info-label">
+                <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 16.92v2.08a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.15a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                Telefono
+              </span>
+              <a href="tel:+390000000000">+39 000 000 0000</a>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">
+                <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+                Sede
+              </span>
+              <p>Via Roma 123, Lecce</p>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">
+                <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+                Orari
+              </span>
+              <p>Lun - Sab · 09:00 - 19:00</p>
+            </div>
+          </div>
+        </aside>
 
         <section class="contact-card contact-form-card">
           <p class="section-kicker">Scrivici</p>
@@ -123,36 +123,20 @@ import FinalCta from "../../components/FinalCta.astro";
       </div>
     </section>
   </main>
+
+  <Footer />
 </BaseLayout>
 
-
 <style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   .contact-page {
     background: linear-gradient(180deg, #fcf8f4 0%, #efe5dc 100%);
   }
-
-  
-  .submit-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 0 22px;
-    border-radius: 999px;
-    border: none;
-    background: #e95519;
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: transform 160ms ease, background 160ms ease;
-   }
-
-.submit-button:hover {
-  transform: translateY(-1px);
-  background: #cf4912;
-}
-  
 
   .container {
     width: min(1200px, calc(100% - 32px));
@@ -199,164 +183,306 @@ import FinalCta from "../../components/FinalCta.astro";
   }
 
   .contact-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.contact-card {
-  min-width: 0;
-  padding: 32px;
-  border-radius: 32px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 24px 60px rgba(31, 20, 14, 0.1);
-}
-
-.contact-form-card {
-  min-width: 0;
-}
-
-.contact-form {
-  margin-top: 28px;
-  width: 100%;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 16px;
-  width: 100%;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-  width: 100%;
-}
-
-.form-field-full {
-  grid-column: 1 / -1;
-}
-
-.form-field label {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.form-field input,
-.form-field textarea {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  appearance: none;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 18px;
-  padding: 16px 18px;
-  font: inherit;
-  line-height: 1.4;
-  color: #1a1a1a;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-field input {
-  min-height: 56px;
-}
-
-.form-field textarea {
-  min-height: 170px;
-  resize: vertical;
-}
-
-.form-actions {
-  margin-top: 24px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-copy {
-  margin: 18px 0 0;
-  max-width: 58ch;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #5f5a56;
-}
-
-.info-list {
-  display: grid;
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.info-item {
-  padding: 18px 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.info-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(31, 20, 14, 0.06);
-  border-color: rgba(233, 85, 25, 0.16);
-}
-
-.info-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #e95519;
-}
-
-.info-icon {
-  width: 18px;
-  height: 18px;
-  stroke: #e95519;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-.info-item a,
-.info-item p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #1a1a1a;
-  text-decoration: none;
-  word-break: break-word;
-}
-
-.info-item a:hover {
-  color: #e95519;
-}
-
-@media (max-width: 768px) {
-  .info-item {
-    padding: 16px 18px;
-    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 24px;
+    align-items: stretch;
   }
-}
-  
+
+  .contact-card {
+    min-width: 0;
+    height: 100%;
+    padding: 36px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 24px 60px rgba(31, 20, 14, 0.1);
+  }
+
+  .contact-card h2 {
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 0.98;
+  }
+
+  .contact-copy {
+    margin: 18px 0 0;
+    max-width: 58ch;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #5f5a56;
+  }
+
+  .contact-info,
+  .contact-form-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .info-item {
+    padding: 18px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(31, 20, 14, 0.06);
+    border-color: rgba(233, 85, 25, 0.16);
+  }
+
+  .info-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e95519;
+  }
+
+  .info-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #e95519;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .info-item a,
+  .info-item p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+    text-decoration: none;
+    word-break: break-word;
+  }
+
+  .info-item a:hover {
+    color: #e95519;
+  }
+
+  .contact-form {
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 16px;
+    width: 100%;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .form-field-full {
+    grid-column: 1 / -1;
+  }
+
+  .form-field label {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    appearance: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 20px;
+    padding: 16px 18px;
+    font: inherit;
+    line-height: 1.4;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-field input {
+    min-height: 56px;
+  }
+
+  .form-field textarea {
+    min-height: 170px;
+    resize: vertical;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: #8a817c;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: rgba(233, 85, 25, 0.45);
+    box-shadow: 0 0 0 4px rgba(233, 85, 25, 0.08);
+  }
+
+  .form-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: none;
+    background: #e95519;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease;
+    box-shadow: 0 12px 30px rgba(233, 85, 25, 0.24);
+  }
+
+  .submit-button:hover {
+    transform: translateY(-1px);
+    background: #cf4912;
+  }
+
+  @media (max-width: 960px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      width: min(100% - 24px, 1200px);
+    }
+
+    .contact-hero {
+      padding: 36px 0 20px;
+    }
+
+    .contact-hero h1 {
+      max-width: 100%;
+      font-size: clamp(2.3rem, 10vw, 3.4rem);
+      line-height: 0.98;
+    }
+
+    .contact-intro {
+      margin-top: 16px;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .contact-section {
+      padding: 8px 0 56px;
+    }
+
+    .contact-grid {
+      gap: 16px;
+    }
+
+    .contact-card {
+      padding: 22px;
+      border-radius: 24px;
+      box-shadow: 0 16px 36px rgba(31, 20, 14, 0.08);
+    }
+
+    .contact-card h2 {
+      font-size: clamp(1.6rem, 7vw, 2.2rem);
+    }
+
+    .contact-copy {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .info-list {
+      margin-top: 22px;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 16px;
+      border-radius: 18px;
+    }
+
+    .info-label {
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.76rem;
+    }
+
+    .info-item a,
+    .info-item p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .contact-form {
+      margin-top: 22px;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .form-field-full {
+      grid-column: auto;
+    }
+
+    .form-field label {
+      font-size: 0.88rem;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .form-field input {
+      min-height: 52px;
+    }
+
+    .form-field textarea {
+      min-height: 150px;
+    }
+
+    .form-actions {
+      margin-top: 18px;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 50px;
+    }
+  }
 </style>
