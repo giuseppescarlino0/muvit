@@ -284,47 +284,51 @@ const mileageOptionLabels = {
             <div class="table-grid">
               <div class="mini-table-card">
                 <h3>Scontistiche</h3>
-                <table class="mini-table">
-                  <thead>
-                    <tr>
-                      <th>Durata</th>
-                      <th>Coefficiente</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rentalRates.durationDiscounts.map((discount) => (
+                <div class="table-wrap mini-table-wrap">
+                  <table class="mini-table">
+                    <thead>
                       <tr>
-                        <th>{discount.label}</th>
-                        <td>{discount.multiplier.toFixed(2)}</td>
+                        <th>Durata</th>
+                        <th>Coefficiente</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {rentalRates.durationDiscounts.map((discount) => (
+                        <tr>
+                          <th>{discount.label}</th>
+                          <td>{discount.multiplier.toFixed(2)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div class="mini-table-card">
                 <h3>Divisione rental</h3>
-                <table class="mini-table">
-                  <thead>
-                    <tr>
-                      {rentalVehicleClasses.map((vehicleClass) => (
-                        <th>{vehicleClass.label}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      {rentalVehicleClasses.map((vehicleClass) => (
-                        <td>{vehicleClass.models[0] ?? "-"}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      {rentalVehicleClasses.map((vehicleClass) => (
-                        <td>{vehicleClass.models[1] ?? "-"}</td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-wrap mini-table-wrap">
+                  <table class="mini-table rental-division-table">
+                    <thead>
+                      <tr>
+                        {rentalVehicleClasses.map((vehicleClass) => (
+                          <th>{vehicleClass.label}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {rentalVehicleClasses.map((vehicleClass) => (
+                          <td>{vehicleClass.models[0] ?? "-"}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        {rentalVehicleClasses.map((vehicleClass) => (
+                          <td>{vehicleClass.models[1] ?? "-"}</td>
+                        ))}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </section>
@@ -598,6 +602,11 @@ const mileageOptionLabels = {
     align-items: start;
   }
 
+  .fleet-filters,
+  .fleet-results {
+    min-width: 0;
+  }
+
   .fleet-filters {
     position: sticky;
     top: 110px;
@@ -721,6 +730,7 @@ const mileageOptionLabels = {
   }
 
   .service-card {
+    min-width: 0;
     padding: 28px;
   }
 
@@ -775,13 +785,15 @@ const mileageOptionLabels = {
   .pricing-panel {
     margin-top: 24px;
     padding: 28px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .panel-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
     gap: 24px;
+    align-items: end;
     margin-bottom: 20px;
   }
 
@@ -791,21 +803,35 @@ const mileageOptionLabels = {
   }
 
   .panel-copy {
-    max-width: 50ch;
+    max-width: none;
     margin: 0;
   }
 
   .table-wrap {
+    width: 100%;
+    min-width: 0;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     border-radius: 22px;
     border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   .pricing-table,
   .mini-table {
     width: 100%;
+    min-width: 720px;
     border-collapse: collapse;
     background: rgba(255, 255, 255, 0.8);
+  }
+
+  .mini-table {
+    min-width: 100%;
+  }
+
+  .rental-division-table {
+    min-width: 540px;
   }
 
   .pricing-table th,
@@ -815,7 +841,15 @@ const mileageOptionLabels = {
     padding: 16px 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     text-align: left;
+    vertical-align: middle;
     font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .pricing-table td:last-child,
+  .pricing-table th:last-child {
+    white-space: normal;
+    min-width: 180px;
   }
 
   .pricing-table thead th,
@@ -843,6 +877,7 @@ const mileageOptionLabels = {
   }
 
   .mini-table-card {
+    min-width: 0;
     padding: 22px;
     border-radius: 24px;
     background: rgba(244, 236, 228, 0.7);
@@ -853,6 +888,10 @@ const mileageOptionLabels = {
     font-size: 1.2rem;
     letter-spacing: -0.03em;
     color: #1a1a1a;
+  }
+
+  .mini-table-wrap {
+    border-radius: 18px;
   }
 
   .config-note {
@@ -885,6 +924,17 @@ const mileageOptionLabels = {
     color: #5f5a56;
   }
 
+  @media (max-width: 1100px) {
+    .fleet-layout {
+      grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    .panel-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+
   @media (max-width: 1024px) {
     .fleet-layout {
       grid-template-columns: 1fr;
@@ -895,20 +945,38 @@ const mileageOptionLabels = {
     }
 
     .service-grid,
-    .table-grid,
-    .panel-head {
+    .table-grid {
       grid-template-columns: 1fr;
-      display: grid;
     }
 
-    .panel-head {
-      align-items: start;
+    .pricing-table {
+      min-width: 760px;
     }
   }
 
   @media (max-width: 768px) {
+    .container {
+      width: min(100% - 24px, 1200px);
+    }
+
     .fleet-hero {
       padding-top: 44px;
+      padding-bottom: 20px;
+    }
+
+    .fleet-hero h1 {
+      max-width: 100%;
+      font-size: clamp(2.3rem, 10vw, 3.4rem);
+      line-height: 0.98;
+    }
+
+    .fleet-intro {
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .fleet-section {
+      padding: 8px 0 56px;
     }
 
     .filter-card,
@@ -925,6 +993,36 @@ const mileageOptionLabels = {
 
     .service-card-top {
       flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .service-badge {
+      white-space: normal;
+    }
+
+    .results-head {
+      margin-bottom: 14px;
+    }
+
+    .pricing-panel {
+      margin-top: 18px;
+    }
+
+    .table-wrap {
+      border-radius: 18px;
+    }
+
+    .pricing-table {
+      min-width: 720px;
+    }
+
+    .mini-table {
+      min-width: 360px;
+    }
+
+    .rental-division-table {
+      min-width: 520px;
     }
 
     .pricing-table th,
@@ -932,7 +1030,21 @@ const mileageOptionLabels = {
     .mini-table th,
     .mini-table td {
       padding: 12px 10px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .pricing-table thead th,
+    .mini-table thead th {
+      font-size: 0.76rem;
+    }
+
+    .mini-table-card {
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .config-note {
+      padding-bottom: 56px;
     }
   }
 </style>
